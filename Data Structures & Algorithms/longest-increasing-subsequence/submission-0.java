@@ -1,0 +1,19 @@
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+        int[] res=new int[nums.length];
+        for(int i=0;i<nums.length;i++){
+            res[i]=1;
+            for(int j=0;j<i;j++){
+                if(nums[i]>nums[j]){
+                    res[i]=Math.max(res[i],res[j]+1);
+                }
+            }
+        }
+        int ans=res[0];
+        for(int num:res){ 
+           // System.out.print(num+" ");
+            ans=Math.max(ans,num);
+        }
+        return ans;
+    }
+}
